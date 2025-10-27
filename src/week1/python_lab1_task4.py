@@ -13,26 +13,40 @@ Use helper functions:
 Print formatted summary in main.
 """
 
+
 def count_characters(text):
     """Count non-space characters in a string."""
-    # TODO: implement
-    pass
+    return len(text.strip())
+
 
 def count_words(text):
     """Count number of words in a string."""
-    # TODO: implement
-    pass
+    return len(text.split())
+
 
 def extract_numbers(text):
     """Return list of integers found in text."""
-    # TODO: implement
-    pass
+    numbers = []
+    for v in text.split():
+        if v.isdigit():
+            numbers.append(int(v))
+    return numbers
+
 
 def analyze_text(text):
     """Perform text-based arithmetic analysis."""
-    # TODO: call helper functions and compute total, average, etc.
-    pass
+    sum, avg = 0, 0
+    numbers = extract_numbers(text)
+    for v in numbers:
+        sum += v
+    avg = sum / len(numbers)
+    return count_characters(text), count_words(text), sum, avg
+
 
 if __name__ == "__main__":
-    # TODO: read input, call analyze_text(), and print results
+    text = input("Enter sentence: ")
+    count_char, count_word, sum, avg = analyze_text(text)
+    print(
+        f"Character count: {count_char}, word count: {count_word}, sum of integers: {sum}, average of integers: {avg}"
+    )
     pass
